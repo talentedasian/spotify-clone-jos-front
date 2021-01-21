@@ -9,15 +9,16 @@ function Sidebar () {
         <div className="sidebar">
             <BrowserRouter>
             <div className="icons-container">
-                <div>
-                    <Link to="/search" className="search-icon-link">
-                        <FcSearch size="20" className="search-icon"/>
-                    </Link>
-                </div>
                 <div className="home-icon-container">
                     <Link to="/home" className="home-icon-link">
                         <FaHome size="35" className="home-icon"/> 
-                        <span className="home-icon-word">Home</span>
+                        <span>Home</span>
+                    </Link>
+                </div>
+                <div className="search-icon-container">
+                    <Link to="/search" className="search-icon-link">
+                        <FcSearch size="35" className="search-icon"/>
+                        <span>Search</span>
                     </Link>
                 </div>
             </div>

@@ -24,28 +24,28 @@
 
 .icons-container {
   padding-top: 40px;
+  font-size: 20px;
+}
+
+.icons-container span {
+  color: white;
+  padding-left: 4.87em;
+}
+
+.icons-container a {
+  text-decoration: none;
+}
+
+.search-icon-container {
+  padding-top: 20px;
 }
 
 .home-icon-container {  
-  position: relative;
-  font-size: 20px;
-  color: white ;
-  display: flex;
+
 }
 
-.home-icon-word {
-  color: white;
-}
-
-.home-icon-word {
-  padding-left: 7.89em;
-  margin-bottom: 10px;
-}
 
 .home-icon {
   color: rgb(248, 243, 243);
-}
-
-.home-icon-link {
-  text-decoration: none;
+  margin-top: 20px;
 }
