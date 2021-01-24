@@ -3,9 +3,8 @@
 function SearchItem () {
 
     return (
-        <div className="search-item">
-                
-
+        <div>
+            
         </div>
 
 

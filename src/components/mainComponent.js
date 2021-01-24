@@ -7,10 +7,10 @@ function MainComponent () {
 
     return (
         <div className="main-component">
-            <div>
+            <div className="side-bar">
                 <Sidebar />
             </div>
-            <div>
+            <div className="search-item">
                 <SearchItem />
             </div>
 

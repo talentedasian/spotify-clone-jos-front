@@ -1,51 +1,52 @@
 .App {
-    
+  height: 100vh;
+  width: 100vw;
 }
 
 .main-component {
-  display: flex;  
+  height: 100vh;
+  width: 100vw;
+  display: flex;
   flex-direction: row;
-  overflow-x: hidden;
+  flex-wrap: nowrap;
 }
 
-.sidebar {
-  width: 20vw;
-  height: 100vh;
-  background-color: #0c0d0c;
-  position: fixed;
+.side-bar {
+  display: flex;
+  flex: 1 auto 0;
+  min-height: 100vh;
+  background-color: rgb(20, 19, 19);
 }
 
 .search-item {
-  margin-left: 20vw;
-  width: 100vw;
-  min-height: 100vh;
+  height: 100vh;
+  flex: 5 auto auto;
   background-color: #3d423d;
+  overflow-y: auto;
 }
 
 .icons-container {
   padding-top: 40px;
-  font-size: 20px;
+  flex-direction: column;
+  list-style: none;
 }
 
-.icons-container span {
-  color: white;
-  padding-left: 4.87em;
-}
-
-.icons-container a {
+.icon-home-container {
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
   text-decoration: none;
 }
 
-.search-icon-container {
-  padding-top: 20px;
-}
-
-.home-icon-container {  
-
-}
-
-
-.home-icon {
-  color: rgb(248, 243, 243);
+.icon-home {
+  color: rgb(184, 169, 169);
   margin-top: 20px;
+  float: left;
+}
+
+.icon-home-container p {
+  color: white;
+  margin-top: 25px;
+  margin-left: 40px;
+  float: right;
 }

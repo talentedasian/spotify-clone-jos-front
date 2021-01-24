@@ -5,8 +5,11 @@ import { BrowserRouter } from 'react-router-dom'
 function App() {
   return (
     <div className="App">
-      <BrowserRouter />
-        <MainComponent />
+      <BrowserRouter>
+        <div className="main-component">
+          <MainComponent />
+        </div>
+      </BrowserRouter>
     </div>
   );
 }

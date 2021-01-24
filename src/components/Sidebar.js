@@ -1,28 +1,22 @@
 import { BrowserRouter, Link } from 'react-router-dom'
 import { FcSearch } from "react-icons/fc";
-import { FaHome } from 'react-icons/fa';
+import {  AiOutlineHome } from 'react-icons/ai';
 
 function Sidebar () {
 
 
     return (
-        <div className="sidebar">
-            <BrowserRouter>
-            <div className="icons-container">
-                <div className="home-icon-container">
-                    <Link to="/home" className="home-icon-link">
-                        <FaHome size="35" className="home-icon"/> 
-                        <span>Home</span>
+        <div>
+            <ul className="icons-container">
+                <li className="icon-home-container">
+                    <Link to="/Home" className="icon-home-container">
+                        <AiOutlineHome size="30px" className="icon-home"/>
+                        <p>HOME</p>
                     </Link>
-                </div>
-                <div className="search-icon-container">
-                    <Link to="/search" className="search-icon-link">
-                        <FcSearch size="35" className="search-icon"/>
-                        <span>Search</span>
-                    </Link>
-                </div>
-            </div>
-            </BrowserRouter>
+                </li>
+            
+            </ul>
+
         </div>
 
     )
