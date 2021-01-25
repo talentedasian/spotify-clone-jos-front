@@ -14,6 +14,7 @@
 .side-bar {
   display: flex;
   flex: 1 auto 0;
+  flex-direction: row;
   min-height: 100vh;
   background-color: rgb(20, 19, 19);
 }
@@ -26,27 +27,33 @@
 }
 
 .icons-container {
-  padding-top: 40px;
+  padding-top: 50px;
+  display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   list-style: none;
-}
-
-.icon-home-container {
-  display: inline-block;
-  text-align: center;
-  vertical-align: top;
+  padding-left: 30px;
+  color: white;
   text-decoration: none;
 }
 
-.icon-home {
-  color: rgb(184, 169, 169);
-  margin-top: 20px;
-  float: left;
+.icons-container p {  
+  padding-left: 10px;
+  color: white;
 }
 
-.icon-home-container p {
-  color: white;
-  margin-top: 25px;
-  margin-left: 40px;
-  float: right;
+
+.icons {
+  color: rgb(184, 169, 169);
+  padding-top: 10px;
+}
+
+.icon-container {
+  display: flex;
+  text-decoration: none;
+}
+
+.search-bar-container {
+  position: fixed;
+  margin-top: 20px;
 }

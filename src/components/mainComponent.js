@@ -1,8 +1,10 @@
 import Sidebar from './Sidebar';
 import SearchItem from './searchItem';
+import { useState } from 'react';
 
 function MainComponent () {
 
+    const [isSearchBar, setIsSearchBar ] = useState(false);
 
 
     return (
@@ -11,7 +13,7 @@ function MainComponent () {
                 <Sidebar />
             </div>
             <div className="search-item">
-                <SearchItem />
+                <SearchItem searchBar={isSearchBar}/>
             </div>
 
         </div>
