@@ -9,13 +9,8 @@ function MainComponent () {
 
     return (
         <div className="main-component">
-            <div className="side-bar">
                 <Sidebar />
-            </div>
-            <div className="search-item">
-                <SearchItem searchBar={isSearchBar}/>
-            </div>
-
+                <SearchItem searchBar={isSearchBar} />
         </div>
 
 
