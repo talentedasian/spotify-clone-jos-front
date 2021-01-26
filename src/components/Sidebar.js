@@ -29,6 +29,12 @@ function Sidebar () {
                 </li>
             </ul>
 
+            <div className="sidebar-border">
+                <div className="sidebar-border-div">
+
+                </div>
+            </div>
+
         </div>
 
     )

@@ -13,10 +13,20 @@
 
 .side-bar {
   display: flex;
-  flex: 1 auto 0;
+  flex: 1.2 auto 0;
   flex-direction: row;
   min-height: 100vh;
   background-color: rgb(20, 19, 19);
+}
+
+.sidebar-border {
+  
+  margin: auto auto auto auto;
+}
+
+.sidebar-border-div {
+  margin-left: 38px;
+  border: 0.1px solid white;
 }
 
 .search-item {
