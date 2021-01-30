@@ -29,7 +29,7 @@
 
 .search-item {
   height: 100vh;
-  flex: 5 auto auto;
+  flex: 5 auto 0;
   background-color: #3d423d;
   overflow-y: auto;
 }
@@ -66,6 +66,7 @@
   position: fixed;
   margin-top: 20px;
   margin-left: 30px;
+  position: relative;
 }
 
 .search-bar-container input {
@@ -78,6 +79,25 @@
   border-top: none;
 }
 
-.button {
-  border: 100px solid black;
+.items-container {
+  text-decoration: none; 
+  list-style-type: none;
+  display: flex; 
+}
+
+.items-artist {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.items-artist-link{
+  text-decoration: none;
+  color: white;
+}
+
+.items-artist-image {
+  height: 200px;
+  width: 235px;
+  border-radius: 50%;
 }

@@ -2,17 +2,15 @@ import { Link } from 'react-router-dom'
 import { BiSearch } from 'react-icons/bi';
 import { RiPlayListFill } from 'react-icons/ri';
 import {  AiOutlineHome } from 'react-icons/ai';
-import { useState } from 'react';
 
 function Sidebar (props) {
-
 
 
     return (
         <div className="side-bar">
             <ul className="icons-container">
                 <li className="icon-home-container" >
-                    <Link to="/home" className="icon-container">
+                    <Link to="/home" className="icon-container" onClick={() => props.home(false)}>
                         <AiOutlineHome size="30px" className="icons icon-home" />
                         <p>HOME</p>
                     </Link>
