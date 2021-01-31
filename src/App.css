@@ -85,6 +85,7 @@
   display: flex; 
   flex-direction: row;
   column-gap: 40px;
+  padding-left: 25px;
 }
 
 .items-artist {
@@ -111,5 +112,20 @@
 
 .item-types {
   color: rgb(216, 208, 208);
+  margin-left: 10px;
 }
 
+.item-names {
+  margin-left: 10px;
+}
+
+.overflown-artist-icon-right {
+  color: rgb(1, 5, 1);
+  position: absolute;
+  margin-left: 100px;
+}
+
+.overflown-artist-icon-right-container {
+  margin-left: 1345px;
+  margin-top: -155px;
+}

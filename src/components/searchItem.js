@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { AiOutlineArrowRight } from 'react-icons/ai'
+import { BsBoxArrowInRight } from 'react-icons/bs'
 
 
 function SearchItem ( props ) {
@@ -9,21 +9,30 @@ function SearchItem ( props ) {
 
     const [item,setItem] = useState();
 
+    const [isOverflown,setIsOverflown] = useState(false);
+    const itemContentOverflown = useRef(null);
+
      const search = (param) => {
         fetch(itemUrl + param)
         .then(res => res.json())
         .then(data => {
                 if (data.Status === "400") {
                     console.log("400 Request Parameters Invalid");
+                    setIsOverflown(false);
                 }
 
                 setItem(data);
                 console.log(data);
             })
         .catch(err => console.log(err));
+
+        if (itemContentOverflown.current.scrollWidth > itemContentOverflown.current.clientWidth ) {
+            setIsOverflown(true);
+            console.log(isOverflown);
+        } 
      }
 
-     
+
 
     return (
         <div className="search-item">
@@ -33,18 +42,28 @@ function SearchItem ( props ) {
                     <input className="search-bar" placeholder="Search" type="text" onKeyPress={e => search(e.target.value)}/>
                 }
             </div>
-                <ul className="items-container">
-                    <AiOutlineArrowRight />
-                        {item?.Artists?.map((artists,key) => {
-                            <li className="items-artist" key={key}>
-                                <Link to={`/artist/${artists.name}`} className="items-artist-link">
-                                    <img src={artists.images[0]?.url} className="items-artist-image"/>
-                                    <p>{artists.name}</p>
-                                    <p className="item-types">{artists.type}</p>
+                <ul ref={itemContentOverflown} className="items-container"> 
+                    
+                    {item?.Artists?.map((artists,key) => {
+                       return  <li className="items-artist" key={key}>
+                            <Link to={`/artists/${artists.id}`} className="items-artist-link" onClick={}>
+                                <img src={artists.images[0]?.url} className="items-artist-image"/>
+                                <p className="item-names">{artists.name}</p>
+                                <p className="item-types">{artists.type}</p>
                                 </Link>
-                            </li>
-                        })}
+                        </li>
+                    })
+                    }
+                    
                 </ul>
+                <div className="overflown-artist-icon-right-container">
+                    {   isOverflown
+                        &&
+                    < BsBoxArrowInRight className="overflow-artist-icon-right" size="40px" />
+                    }
+                </div>
+                
+                
         </div>
 
 
