@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { AiOutlineArrowRight } from 'react-icons/ai'
 
 
 function SearchItem ( props ) {
@@ -12,8 +13,14 @@ function SearchItem ( props ) {
         fetch(itemUrl + param)
         .then(res => res.json())
         .then(data => {
-            setItem(data)
-        console.log(item)});
+                if (data.Status === "400") {
+                    console.log("400 Request Parameters Invalid");
+                }
+
+                setItem(data);
+                console.log(data);
+            })
+        .catch(err => console.log(err));
      }
 
      
@@ -26,15 +33,18 @@ function SearchItem ( props ) {
                     <input className="search-bar" placeholder="Search" type="text" onKeyPress={e => search(e.target.value)}/>
                 }
             </div>
-                <div className="items-container">
+                <ul className="items-container">
+                    <AiOutlineArrowRight />
                         {item?.Artists?.map((artists,key) => {
-                            return <li className="items-artist" key={key}>
+                            <li className="items-artist" key={key}>
                                 <Link to={`/artist/${artists.name}`} className="items-artist-link">
                                     <img src={artists.images[0]?.url} className="items-artist-image"/>
+                                    <p>{artists.name}</p>
+                                    <p className="item-types">{artists.type}</p>
                                 </Link>
                             </li>
                         })}
-                </div>
+                </ul>
         </div>
 
 
