@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { BiSearch } from 'react-icons/bi';
 import { RiPlayListFill } from 'react-icons/ri';
 import {  AiOutlineHome } from 'react-icons/ai';
+import { AiFillGithub } from 'react-icons/ai';
 
 function Sidebar (props) {
 
@@ -33,6 +34,14 @@ function Sidebar (props) {
                 
             </div>
 
+            <ul className="social-media-icons-container">
+                <li className="github-icon-container">
+                    <a href="https://github.com/talentedasian/spotify-front-clone.git" target="_blank" rel="noreferrer">
+                        <AiFillGithub className="icon-github" size="60px" className="github-icon"/>
+                        <p>Code is on Github</p>
+                    </a>
+                </li>
+            </ul>
 
         </div>
 

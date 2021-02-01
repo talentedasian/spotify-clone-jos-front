@@ -129,3 +129,26 @@
   margin-left: 1345px;
   margin-top: -155px;
 }
+
+.social-media-icons-container {
+  list-style-type: none;
+  display: flex;
+}
+
+.github-icon-container {
+
+  margin-bottom: 600px;
+}
+
+.github-icon-container p {
+  position: relative;
+  padding-top: 10px;
+  margin-left: 20px;
+  float: right;
+  text-decoration: none;
+  color: white;
+}
+
+.github-icon {
+  color: black;
+}

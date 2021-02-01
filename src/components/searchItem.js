@@ -29,7 +29,7 @@ function SearchItem ( props ) {
         if (itemContentOverflown.current.scrollWidth > itemContentOverflown.current.clientWidth ) {
             setIsOverflown(true);
             console.log(isOverflown);
-        } 
+        }
      }
 
 
@@ -46,7 +46,7 @@ function SearchItem ( props ) {
                     
                     {item?.Artists?.map((artists,key) => {
                        return  <li className="items-artist" key={key}>
-                            <Link to={`/artists/${artists.id}`} className="items-artist-link" onClick={}>
+                            <Link to={`/artists/${artists.id}`} className="items-artist-link" >
                                 <img src={artists.images[0]?.url} className="items-artist-image"/>
                                 <p className="item-names">{artists.name}</p>
                                 <p className="item-types">{artists.type}</p>
@@ -54,14 +54,14 @@ function SearchItem ( props ) {
                         </li>
                     })
                     }
-                    
-                </ul>
-                <div className="overflown-artist-icon-right-container">
+                    <div className="overflown-artist-icon-right-container">
                     {   isOverflown
                         &&
-                    < BsBoxArrowInRight className="overflow-artist-icon-right" size="40px" />
+                        <BsBoxArrowInRight className="overflow-artist-icon-right" size="40px" />
                     }
                 </div>
+                </ul>
+                
                 
                 
         </div>
