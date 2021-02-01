@@ -18,6 +18,7 @@
   flex-direction: column;
   min-height: 100vh;
   background-color: rgb(20, 19, 19);
+  overflow-y: hidden;
 }
 
 .sidebar-border{
@@ -28,7 +29,6 @@
 }
 
 .search-item {
-  height: 100vh;
   flex: 5 auto 0;
   background-color: #3d423d;
   overflow-y: auto;
@@ -136,13 +136,12 @@
 }
 
 .github-icon-container {
-
-  margin-bottom: 600px;
+  margin-bottom: 570px;
 }
 
 .github-icon-container p {
   position: relative;
-  padding-top: 10px;
+  padding-top: 2px;
   margin-left: 20px;
   float: right;
   text-decoration: none;
@@ -151,4 +150,8 @@
 
 .github-icon {
   color: black;
+}
+
+.about-us {
+  padding-left: 50px;
 }

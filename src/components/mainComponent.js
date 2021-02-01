@@ -1,6 +1,7 @@
 import Sidebar from './Sidebar';
 import SearchItem from './searchItem';
 import { useState } from 'react';
+import Home from './home/home'
 
 function MainComponent () {
 
@@ -16,7 +17,7 @@ function MainComponent () {
 
     return (
         <div className="main-component">
-                <Sidebar home={home} setSearchBar={setSearchBarInput}/>
+                <Sidebar home={home} setSearchBar={setSearchBarInput} />
                 <SearchItem searchBar={isSearchBar} />
 
         </div>

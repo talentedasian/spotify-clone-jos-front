@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { BsBoxArrowInRight } from 'react-icons/bs'
+import Home from './home/home'
 
 
 function SearchItem ( props ) {
@@ -61,7 +62,7 @@ function SearchItem ( props ) {
                     }
                 </div>
                 </ul>
-                
+                <Home />
                 
                 
         </div>

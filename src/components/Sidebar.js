@@ -3,15 +3,16 @@ import { BiSearch } from 'react-icons/bi';
 import { RiPlayListFill } from 'react-icons/ri';
 import {  AiOutlineHome } from 'react-icons/ai';
 import { AiFillGithub } from 'react-icons/ai';
+import Home from './home/home'
 
 function Sidebar (props) {
-
+    
 
     return (
         <div className="side-bar">
             <ul className="icons-container">
                 <li className="icon-home-container" >
-                    <Link to="/home" className="icon-container" onClick={() => props.home(false)}>
+                    <Link to="/home" className="icon-container" onClick={() => props.homeRender}>
                         <AiOutlineHome size="30px" className="icons icon-home" />
                         <p>HOME</p>
                     </Link>
@@ -34,10 +35,11 @@ function Sidebar (props) {
                 
             </div>
 
+            <h2 className="about-us">About Us:</h2>
             <ul className="social-media-icons-container">
                 <li className="github-icon-container">
-                    <a href="https://github.com/talentedasian/spotify-front-clone.git" target="_blank" rel="noreferrer">
-                        <AiFillGithub className="icon-github" size="60px" className="github-icon"/>
+                    <a href="https://github.com/talentedasian/spotify-clone-jos-front.git" target="_blank" rel="noreferrer">
+                        <AiFillGithub className="icon-github" size="50px" className="github-icon"/>
                         <p>Code is on Github</p>
                     </a>
                 </li>
