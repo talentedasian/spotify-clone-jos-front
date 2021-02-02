@@ -3,6 +3,7 @@ import { BiSearch } from 'react-icons/bi';
 import { RiPlayListFill } from 'react-icons/ri';
 import {  AiOutlineHome } from 'react-icons/ai';
 import { AiFillGithub } from 'react-icons/ai';
+import './sidebar.css'
 
 function Sidebar (props) {
     

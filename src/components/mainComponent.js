@@ -1,5 +1,5 @@
-import Sidebar from './Sidebar';
-import SearchItem from './searchItem';
+import Sidebar from './sideBar/Sidebar';
+import SearchItem from './searchItem/searchItem';
 import { useState } from 'react';
 
 function MainComponent () {

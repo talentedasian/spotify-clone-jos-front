@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import './artist.css'
 
 
 function Artist ( props ) {
@@ -19,6 +20,7 @@ function Artist ( props ) {
     return (
         <div className="artist-js">
             {artist[0]?.name}
+            ioasdjioassdaskdjsa
         </div>
 
     )

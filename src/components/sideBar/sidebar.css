@@ -1,0 +1,89 @@
+.side-bar {
+    flex: 1.2 auto 0;
+    position: relative;
+    min-height: 100vh;
+    background-color: rgb(20, 19, 19);
+    overflow-y: hidden;
+}
+  
+.side-bar-fixed {
+    position: fixed;
+}
+  
+.sidebar-border{
+    margin: auto;
+    border: 1px solid white;
+    width: 82%;
+    margin-top: 13px;
+}
+  
+.icons-container {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    list-style: none;
+    padding-left: 30px;
+    color: white;
+    text-decoration: none;
+    margin-top: 40px;
+}
+  
+.icons-container p {  
+    padding-left: 10px;
+    color: white;
+}
+  
+  
+.icons {
+    color: rgb(184, 169, 169);
+    padding-top: 10px;
+}
+  
+.icon-container {
+    display: flex;
+    text-decoration: none;
+}
+  
+.search-bar-container {
+    position: fixed;
+    margin-top: 20px;
+    margin-left: 30px;
+    position: relative;
+}
+  
+.search-bar-container input {
+    height: 17px;
+    border-radius: 20px;
+    outline: none;
+    outline-width: 0;
+    outline-style: none;
+    border-style: none;
+    border-top: none;
+}
+
+.social-media-icons-container {
+    list-style-type: none;
+    display: flex;
+}
+  
+.github-icon-container {
+    margin-bottom: 570px;
+}
+  
+.github-icon-container p {
+    position: relative;
+    padding-top: 2px;
+    margin-left: 20px;
+    float: right;
+    text-decoration: none;
+    color: white;
+}
+  
+.github-icon {
+    color: black;
+}
+  
+.about-us {
+    padding-left: 50px;
+}

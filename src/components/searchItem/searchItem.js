@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { BsBoxArrowInRight } from 'react-icons/bs'
-import Home from './home/home'
-import Artist from './artist/artist'
+import Home from '../home/home'
+import Artist from '../artist/artist'
+import './item.css'
 
 
 function SearchItem ( props ) {
