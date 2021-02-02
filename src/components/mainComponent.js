@@ -1,7 +1,6 @@
 import Sidebar from './Sidebar';
 import SearchItem from './searchItem';
 import { useState } from 'react';
-import Home from './home/home'
 
 function MainComponent () {
 

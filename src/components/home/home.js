@@ -26,7 +26,6 @@ function Home ( props ) {
 
     return (
         <div className="home-js">
-            <button onClick={fetchHome}></button>
             <div>
                 
             </div>
