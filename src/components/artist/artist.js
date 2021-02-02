@@ -19,8 +19,8 @@ function Artist ( props ) {
 
     return (
         <div className="artist-js">
-            {artist[0]?.name}
-            ioasdjioassdaskdjsa
+            
+            
         </div>
 
     )

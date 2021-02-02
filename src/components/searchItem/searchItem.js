@@ -77,8 +77,6 @@ function SearchItem ( props ) {
                 </ul>
                 <Artist id={id}/>
                 <Home />
-                
-                
         </div>
 
 

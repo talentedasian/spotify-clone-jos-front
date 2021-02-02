@@ -7,6 +7,7 @@
 }
   
 .side-bar-fixed {
+    width: 19.4vw;
     position: fixed;
 }
   
@@ -15,6 +16,12 @@
     border: 1px solid white;
     width: 82%;
     margin-top: 13px;
+    text-align: center;
+}
+
+.sidebar-border-span {
+    border: 10px solid white;
+
 }
   
 .icons-container {
