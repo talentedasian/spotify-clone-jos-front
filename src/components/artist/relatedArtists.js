@@ -4,7 +4,7 @@ function RelatedArtists () {
 
     return (
         <div className="related-artists-js">
-
+            
         </div>
     )
 }

@@ -30,14 +30,14 @@ function SearchItem ( props ) {
                 } else if (itemContentOverflown.current.scrollWidth > itemContentOverflown.current.clientWidth ) {
                     setIsOverflown(true);
                     console.log(isOverflown);
-                }
+                } 
 
                 setItem(data);
                 setIsItem(true);
                 console.log(data);
             })
-        .catch(err => console.log(err));
-     }, [parameters])
+        .catch(err => console.log(err))
+        }, [parameters]);
 
      const setIdId = (id) => {
          setId(id);
@@ -61,7 +61,9 @@ function SearchItem ( props ) {
                         item?.Artists?.map((artists,key) => {
                        return  <li className="items-artist" key={key}>
                             <Link to={`/artists/${artists.id}`} className="items-artist-link" onClick={() => setIdId(artists.id)}>
-                                <img src={artists.images[0]?.url} className="items-artist-image"/>
+                                <div className="items-artist-image" style={{
+                                    "background-image": `url(${artists.images[0]?.url})`
+                                        }} />
                                 <p className="item-names">{artists.name}</p>
                                 <p className="item-types">{artists.type}</p>
                                 </Link>
