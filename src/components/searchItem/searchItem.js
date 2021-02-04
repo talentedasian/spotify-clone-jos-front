@@ -15,6 +15,7 @@ function SearchItem ( props ) {
     const [parameters,setParameters] = useState('');
     
     const [id,setId] = useState('');
+    const [isArtist,setIsArtist] = useState(false);
 
     const [isOverflown,setIsOverflown] = useState(false);
     const itemContentOverflown = useRef(null);
@@ -94,7 +95,10 @@ function SearchItem ( props ) {
                         })}
                 </ul>}
 
-                <Artist />
+                {   isArtist
+                        &&
+                    <Artist id={id}/>
+                }
             </div>
         </div>
 
