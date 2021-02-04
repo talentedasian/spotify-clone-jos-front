@@ -59,8 +59,9 @@
 }
 
 .items-tracks-container {
+  margin-top: 100px;
   display: grid;
-  grid-template-columns: repeat(9, 1fr);
+  grid-template-columns: repeat(5, 220px);
   grid: 10px;
   row-gap: 30px;
   text-decoration: none; 
@@ -73,11 +74,12 @@
 .items-tracks {
   background-color: rgb(34, 34, 34);
   box-shadow:  3px 3px 10px 4px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
 }
 
 .items-tracks-image {
   position: relative;
-  width: 200px;
+  width: 100%;
   height: 200px;
 }
 
@@ -89,5 +91,9 @@
 .item-tracks-artist-link {
   text-decoration: none;
   color: white;
+}
+
+.custom-context-menu {
+  background-color: rgb(32, 32, 32);
 }
 

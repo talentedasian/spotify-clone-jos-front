@@ -21,6 +21,7 @@ function SearchItem ( props ) {
     const itemContentOverflown = useRef(null);
 
 
+
      useEffect(() => {
         fetch(itemUrl + parameters)
         .then(res => res.json())
@@ -40,16 +41,33 @@ function SearchItem ( props ) {
         .catch(err => console.log(err))
         }, [parameters]);
 
-     const setArtistId = (id,event) => {
-         setId(id);
+     const setArtistId = (id) => {
+         setId(id)
          setIsItem(false);
          setIsArtist(true);
      }
 
+     const [contextMenuAttributes,setContextMenuAttributes] = useState({
+        positionX: 0,
+        positionY: 0,
+        visible: false
+    });
 
+    
+    const setmenu = (e) => {
+        setContextMenuAttributes({
+            positionX: e.pageX + "px",
+            positionY: e.pageY + "px",
+            visible: true
+        });
+        console.log(contextMenuAttributes)
+        e.preventDefault();
+    }
+
+    const menu = ["menu","gg"]; 
 
     return (
-        <div className="search-item">
+        <div className="search-item" onClick={e => setContextMenuAttributes({visible: false})}>
             <div className="search-bar-container">
                 {   props.searchBar 
                         && 
@@ -62,7 +80,7 @@ function SearchItem ( props ) {
                     <ul ref={itemContentOverflown} className="items-artist-container"> 
                         {item?.Artists?.map((artists,key) => {
                             return  <li className="items-artist" key={key}>
-                                <Link to={`/artists/${artists.id}`} className="items-artist-link items-link" onContextMenu={() => setArtistId()} onClick={() => setIdId(artists.id)}>
+                                <Link to={`/artists/${artists.id}`} className="items-artist-link items-link" onContextMenu={e => setmenu(e)} onClick={(e) => setArtistId(e,artists.id)}>
                                     <div className="items-artist-image" style={{
                                         backgroundImage: `url(${artists.images[0]?.url})`
                                     }} />
@@ -87,9 +105,9 @@ function SearchItem ( props ) {
                                 <Link to={`/tracks/${tracks.id}`} className="items-artist-link items-link" >
                                     <img src={tracks.album?.images[0].url} className="items-tracks-image"/>
                                     <p className="item-names">{tracks.name}</p>
-                                    <Link to={`/artists/${tracks.artists[0].id}`} className="item-tracks-artist-link">
+                                </Link>
+                                <Link to={`/artists/${tracks.artists[0].id}`} className="item-tracks-artist-link">
                                         <p className="item-tracks-artist-name">{tracks?.artists[0]?.name}</p>
-                                    </Link>
                                 </Link>
                             </li>
                         })}
@@ -99,6 +117,23 @@ function SearchItem ( props ) {
                         &&
                     <Artist id={id}/>
                 }
+
+                
+
+                {   contextMenuAttributes.visible && 
+                    <CustomContextMenu styles={{
+                        position: "absolute",
+                        top: contextMenuAttributes.positionY,
+                        left: contextMenuAttributes.positionX,
+                        width: "200px"
+                        }}
+                        contentCustomContextMenu={menu.map(items => {
+                            return <li>
+                                {items}
+                            </li>
+
+                        })}/>
+                    }
             </div>
         </div>
 

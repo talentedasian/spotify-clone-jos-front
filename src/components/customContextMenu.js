@@ -1,22 +1,18 @@
+import { useState } from "react";
+import './searchItem/item.css'
 
+function CustomContextMenu ( props ) {
 
-function CustomContextMenu () {
+    
+
+    
 
     return (
-        <div className="custom-context-menu" style={{
-            backgroundColor: "black"
-        }}>
-            <ul style={{
-                position: "absolute",
-                backgroundColor: "green"
-            }}>
-                <li>
-                    gg
-                </li>
-                <li>
-                    wp
-                </li>
-            </ul>
+        <div className="custom-context-menu" >
+            
+                <ul className="custom-context-menu" style={props.styles}>
+                    {props.contentCustomContextMenu}
+                </ul>
         </div>
 
     )
