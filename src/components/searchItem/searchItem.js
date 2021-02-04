@@ -86,10 +86,15 @@ function SearchItem ( props ) {
                                     <img src={tracks.album?.images[0].url} className="items-tracks-image"/>
                                     <p className="item-names">{tracks.name}</p>
                                     <p className="item-types">{tracks.type}</p>
+                                    <Link to={`/artists/${tracks.artists[0].id}`} className="item-tracks-artist-link">
+                                        <p className="item-tracks-artist-name">{tracks?.artists[0]?.name}</p>
+                                    </Link>
                                 </Link>
                             </li>
                         })}
                 </ul>}
+
+                <Artist />
             </div>
         </div>
 

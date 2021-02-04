@@ -20,7 +20,7 @@ function Artist ( props ) {
     return (
         <div className="artist-js">
             <div className="artist-profile-container">
-            
+                   
             </div>
         </div>
 
