@@ -4,7 +4,7 @@ import { BsBoxArrowInRight } from 'react-icons/bs'
 import Home from '../home/home'
 import Artist from '../artist/artist'
 import './item.css'
-
+import CustomContextMenu from '/home/almir/frontend projects/spotify-front/src/components/customContextMenu.js';
 
 function SearchItem ( props ) {
 
@@ -40,9 +40,10 @@ function SearchItem ( props ) {
         .catch(err => console.log(err))
         }, [parameters]);
 
-     const setIdId = (id) => {
+     const setArtistId = (id,event) => {
          setId(id);
          setIsItem(false);
+         setIsArtist(true);
      }
 
 
@@ -61,13 +62,13 @@ function SearchItem ( props ) {
                     <ul ref={itemContentOverflown} className="items-artist-container"> 
                         {item?.Artists?.map((artists,key) => {
                             return  <li className="items-artist" key={key}>
-                                <Link to={`/artists/${artists.id}`} className="items-artist-link items-link" onClick={() => setIdId(artists.id)}>
+                                <Link to={`/artists/${artists.id}`} className="items-artist-link items-link" onContextMenu={() => setArtistId()} onClick={() => setIdId(artists.id)}>
                                     <div className="items-artist-image" style={{
                                         backgroundImage: `url(${artists.images[0]?.url})`
                                     }} />
                                     <p className="item-names">{artists.name}</p>
                                     <p className="item-types">{artists.type}</p>
-                                    </Link>
+                                </Link>
                             </li>
                         })}
                     <div className="overflown-artist-icon-right-container">
@@ -83,10 +84,9 @@ function SearchItem ( props ) {
                     <ul className="items-tracks-container">
                         {item?.Tracks?.map((tracks,key) => {
                             return <li className="items-tracks" key={key}>
-                                <Link to={`/tracks/${tracks.id}`} className="items-artist-link items-link">
+                                <Link to={`/tracks/${tracks.id}`} className="items-artist-link items-link" >
                                     <img src={tracks.album?.images[0].url} className="items-tracks-image"/>
                                     <p className="item-names">{tracks.name}</p>
-                                    <p className="item-types">{tracks.type}</p>
                                     <Link to={`/artists/${tracks.artists[0].id}`} className="item-tracks-artist-link">
                                         <p className="item-tracks-artist-name">{tracks?.artists[0]?.name}</p>
                                     </Link>

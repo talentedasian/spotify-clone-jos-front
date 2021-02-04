@@ -2,6 +2,7 @@
   flex: 5 auto 0; 
   background-color: #3d423d;
   overflow-y: auto;
+  width: 100vw;
 }
 
 .items-artist-container {
@@ -59,7 +60,7 @@
 
 .items-tracks-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(9, 1fr);
   grid: 10px;
   row-gap: 30px;
   text-decoration: none; 
@@ -81,13 +82,12 @@
 }
 
 .item-tracks-artist-name {
-  position: absolute;
-  margin-left: 400px;
-  margin-top: -60px;
-  margin-left: 300px;
+  margin-left: 10px;
+  text-decoration: underline rgb(240, 231, 231) ;
 }
 
 .item-tracks-artist-link {
   text-decoration: none;
   color: white;
 }
+
