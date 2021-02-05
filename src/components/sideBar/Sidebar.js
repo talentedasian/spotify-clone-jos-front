@@ -32,19 +32,6 @@ function Sidebar (props) {
                     </li>
                 </ul>
 
-                <div className="sidebar-border">
-                    
-                </div>
-
-                <h2 className="about-us">About Us:</h2>
-                <ul className="social-media-icons-container">
-                    <li className="github-icon-container">
-                        <a href="https://github.com/talentedasian/spotify-clone-jos-front.git" target="_blank" rel="noreferrer">
-                            <AiFillGithub className="icon-github" size="50px" className="github-icon"/>
-                            <p>Code is on Github</p>
-                        </a>
-                    </li>
-                </ul>
             </div>
         </div>
 
