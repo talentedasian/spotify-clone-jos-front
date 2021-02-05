@@ -13,25 +13,14 @@ function SearchItem ( props ) {
     const [item,setItem] = useState();
     const [isItem,setIsItem] = useState(false);
     const [parameters,setParameters] = useState('');
-    const [isShow,setIsShow] = useState(false);
     
     const [id,setId] = useState('');
     const [isArtist,setIsArtist] = useState(false);
 
+    const [isSeeAll, setIsSeeAll] = useState(false);
+
     const [isOverflown,setIsOverflown] = useState(false);
     const itemContentOverflown = useRef(null);
-
-    const [loginUrl,setLoginUrl] = useState('');
-
-
-    const login = () => {
-        fetch("http://localhost:8080/api/spotify-auth/login")
-        .then(res => res.json())
-        .then(data => {
-            setLoginUrl(data);
-        })
-        .catch(err => console.log(err));
-    }
 
     function seeAll () {
         return (
@@ -41,15 +30,7 @@ function SearchItem ( props ) {
         )
     }
 
-    const accessToken = () => {
-        fetch(loginUrl)
-        .then(res => res.json())
-        .then(data => console.log(data))
-        .catch(err => console.log(err));
-    }
-
-
-     const fetchAPI = (params) => {
+    const fetchAPI = (params) => {
         fetch(itemUrl + params)
         .then(res => res.json())
         .then(data => {
@@ -63,12 +44,31 @@ function SearchItem ( props ) {
 
                 setItem(data);
                 setIsItem(true);
-                setIsShow(true);
+                setIsSeeAll(false);
                 console.log(data);
+                setParameters(params)
             })
         .catch(err => console.log(err))
-        }
+    }
     
+    const fetchAPIAll = () => {
+        fetch("http://localhost:8080/api/search/item-artist?name=" + parameters)
+        .then(res => res.json())
+        .then(data => {
+                if (data.Status === "400") {
+                    console.log("400 Request Parameters Invalid");
+                    setIsOverflown(false);
+                } else if (itemContentOverflown.current.scrollWidth > itemContentOverflown.current.clientWidth ) {
+                    setIsOverflown(true);
+                    console.log(isOverflown);
+                } 
+
+                setItem(data);
+                setIsItem(false);
+                setIsSeeAll(true);
+                console.log(data);
+            })
+    }
 
      const setArtistId = (id) => {
          setId(id)
@@ -101,14 +101,14 @@ function SearchItem ( props ) {
                             textAlign: "end",
                             marginRight: "200px",
                             color: "white"
-                        }}>SEE ALL</h3>
+                        }} onClick={e => fetchAPIAll(e.target.value)}>SEE ALL</h3>
                     </Link>
                 }
                 {   isItem
                         &&
                     <ul ref={itemContentOverflown} className="items-artist-container"> 
                         {item?.Artists?.slice(0,6).map((artists,key) => {
-                            return  <li className="items-artist" key={key}>
+                            return  <li className="items-artists" key={key}>
                                 <Link to={`/artists/${artists.id}`} className="items-artist-link items-link"
                                         onContextMenu={e => {
                                             setContextMenuAttributes({
@@ -129,7 +129,7 @@ function SearchItem ( props ) {
                         })}
                     <div className="overflown-artist-icon-right-container">
                     {   isOverflown
-                        &&
+                             &&
                         <BsBoxArrowInRight className="overflow-artist-icon-right" size="40px" />
                     }
                     </div>
@@ -145,14 +145,25 @@ function SearchItem ( props ) {
                                     <Link to={`/artists/${tracks.artists[0].id}`} className="item-tracks-artist-link">
                                             <p className="item-tracks-artist-name">{tracks?.artists[0]?.name}</p>
                                     </Link>
-                                    <p className="item-types">{tracks.type}</p>
+                                    <p className="item-types item-tracks-types">{tracks.type}</p>
                             </li>
                         })}
-                </ul>
+                    </ul>
                 }
                 {   isItem  
                         &&
-                    <ul className="item-albums-container">
+                    <ul className="items-album-container">
+                        {item?.Albums?.slice(0,5).map((albums,key) => {
+                            return <li key={key} className="items-albums">
+                                <Link to={`/albums/${albums.id}`} className="item-albums-link">
+                                <div className="items-albums-image" style={{
+                                        backgroundImage: `url(${albums.images[0]?.url})`
+                                }} />
+                                <p className="item-names item-names-album">{albums.name}</p>
+                                <p className="item-types item-albums-types">{albums.type}</p>
+                                </Link>
+                            </li>
+                        })}
                     </ul>
 
                 }
@@ -162,7 +173,23 @@ function SearchItem ( props ) {
                     <Artist id={id}/>
                 }
 
-                
+                {   isSeeAll 
+                        &&
+                    <ul className="items-artists-see-all-container">
+                        {item?.map((artists,key) => {
+                            return <li className="items-artists-see-all" key={key}>
+                                <Link to={`/artists/${artists.id}`} className="items-artists-see-all-link">
+                                <div className="items-artist-image items-artists-see-all-image" style={{
+                                        backgroundImage: `url(${artists.images[0]?.url})`
+                                    }} />
+                                    <p className="item-names">{artists.name}</p>
+                                </Link>
+                            </li>   
+                        })}
+                    </ul>
+
+
+                }
 
                 {   contextMenuAttributes.visible && 
                     <CustomContextMenu styles={{
