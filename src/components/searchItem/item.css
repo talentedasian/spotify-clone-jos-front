@@ -4,6 +4,7 @@
   overflow-y: auto;
   width: 100vw;
   display: grid;
+  overflow-x: hidden;
 }
 
 .items-artist-container {
@@ -23,7 +24,7 @@
 
 .items-artists {
   height: 250px;
-  min-width: 200px;
+  width: 180px;
   background-color: rgb(32, 36, 32);
   margin-top: 10px;
   border-radius: 5px;
@@ -38,7 +39,7 @@
   height: 150px;
   width: 150px;
   border-radius: 50%;
-  margin-left: 25px;
+  margin-left: 13px;
   margin-top: 13px;
   background-size: 100%;
   box-shadow:  3px 3px 10px 4px rgba(0, 0, 0, 0.4);
@@ -65,16 +66,21 @@
   color: white;
 }
 
+.items-albums-tracks-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
 .items-tracks-container {
-  margin-left: 710px;
-  margin-top: 100px;
   display: grid;
-  grid-template-columns: 680px;
+  grid-template-columns: 450px;
   row-gap: 30px;
   list-style-type: none;
 }
 
 .items-tracks {
+  width: 390px;
   background-color: rgb(31, 29, 29);
   box-shadow:  -3px 3px 10px 4px rgba(0, 0, 0, 0.4);
 }
@@ -139,15 +145,16 @@
   margin-top: 30px;
 }
 
-.items-album-container {
-  margin-top: -725px;  
+.items-album-container { 
   display: grid;
   row-gap: 30px;
   column-gap: 40px;
-  grid-template-columns: 680px;
+  grid-template-columns: 450px;
 }
 
 .items-albums {
+  margin-left: -50px;
+  width: 390px;
   list-style-type: none;
   background-color: rgb(31, 29, 29);
   box-shadow:  -3px 3px 10px 4px rgba(0, 0, 0, 0.4);

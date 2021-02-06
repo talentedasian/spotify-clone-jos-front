@@ -98,16 +98,15 @@ function SearchItem ( props ) {
                         textDecoration: "none"
                     }}>
                         <h3 style={{
-                            textAlign: "end",
-                            marginRight: "200px",
-                            color: "white"
+                            color: "white",
+                            textAlign: "end"
                         }} onClick={e => fetchAPIAll(e.target.value)}>SEE ALL</h3>
                     </Link>
                 }
                 {   isItem
                         &&
                     <ul ref={itemContentOverflown} className="items-artist-container"> 
-                        {item?.Artists?.slice(0,6).map((artists,key) => {
+                        {item?.Artists?.slice(0,5).map((artists,key) => {
                             return  <li className="items-artists" key={key}>
                                 <Link to={`/artists/${artists.id}`} className="items-artist-link items-link"
                                         onContextMenu={e => {
@@ -137,21 +136,19 @@ function SearchItem ( props ) {
                 }
                 {   isItem
                         &&
-                    <ul className="items-tracks-container"> 
-                        {item?.Tracks?.slice(0,5).map((tracks,key) => {
-                            return <li className="items-tracks" key={key}>
-                                    <img src={tracks.album?.images[0].url} className="items-tracks-image"/>
-                                    <p className="item-names item-names-track">{tracks.name}</p>
-                                    <Link to={`/artists/${tracks.artists[0].id}`} className="item-tracks-artist-link">
-                                            <p className="item-tracks-artist-name">{tracks?.artists[0]?.name}</p>
-                                    </Link>
-                                    <p className="item-types item-tracks-types">{tracks.type}</p>
-                            </li>
-                        })}
-                    </ul>
-                }
-                {   isItem  
-                        &&
+                    <div className="items-albums-tracks-container">
+                        <ul className="items-tracks-container"> 
+                            {item?.Tracks?.slice(0,5).map((tracks,key) => {
+                                return <li className="items-tracks" key={key}>
+                                        <img src={tracks.album?.images[0].url} className="items-tracks-image"/>
+                                        <p className="item-names item-names-track">{tracks.name}</p>
+                                        <Link to={`/artists/${tracks.artists[0].id}`} className="item-tracks-artist-link">
+                                                <p className="item-tracks-artist-name">{tracks?.artists[0]?.name}</p>
+                                        </Link>
+                                        <p className="item-types item-tracks-types">{tracks.type}</p>
+                                </li>
+                            })}
+                        </ul>
                     <ul className="items-album-container">
                         {item?.Albums?.slice(0,5).map((albums,key) => {
                             return <li key={key} className="items-albums">
@@ -165,8 +162,15 @@ function SearchItem ( props ) {
                             </li>
                         })}
                     </ul>
+                    </div>
+                    }
+                   
+                    
+                
+                  
+                        
 
-                }
+                
 
                 {   isArtist
                         &&
