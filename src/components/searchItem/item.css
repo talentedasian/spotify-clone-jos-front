@@ -1,20 +1,19 @@
 .search-item {
-  flex: 0.842 auto 0; 
+  flex: 0.842 0 0; 
   background-color: #3d423d;
   overflow-y: auto;
-  width: 100vw;
   display: grid;
   overflow-x: hidden;
 }
 
 .items-artist-container {
-  margin-left: -10px;
+  margin-left: 30px;
   text-decoration: none; 
   list-style-type: none;
   display: flex; 
   flex-direction: row;
   column-gap: 40px;
-  
+  margin-bottom: 40px;
 }
 
 .items-link {
@@ -67,20 +66,21 @@
 }
 
 .items-albums-tracks-container {
+  margin-top: 50px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  column-gap: 40px;
 }
 
 .items-tracks-container {
   display: grid;
-  grid-template-columns: 450px;
+  grid-template-columns: 510px;
   row-gap: 30px;
   list-style-type: none;
 }
 
 .items-tracks {
-  width: 390px;
   background-color: rgb(31, 29, 29);
   box-shadow:  -3px 3px 10px 4px rgba(0, 0, 0, 0.4);
 }
@@ -105,8 +105,15 @@
 }
 
 .item-tracks-artist-link {
+  margin-left: 130px;
   text-decoration: none;
   color: white;
+  font-size: 15px;
+  font-weight: 200;
+}
+
+.item-tracks-artist-link:hover {
+  text-decoration: underline 1px white;
 }
 
 .item-tracks-types {
@@ -149,12 +156,12 @@
   display: grid;
   row-gap: 30px;
   column-gap: 40px;
-  grid-template-columns: 450px;
+  grid-template-columns: 460px;
 }
 
 .items-albums {
+  height: 120px;
   margin-left: -50px;
-  width: 390px;
   list-style-type: none;
   background-color: rgb(31, 29, 29);
   box-shadow:  -3px 3px 10px 4px rgba(0, 0, 0, 0.4);
@@ -182,6 +189,55 @@
 }
 
 .item-albums-types {
-  margin-top: 42px;
   margin-left: 130px;
+}
+
+.items-playlists-container {
+  margin-top: 15px;
+  margin-left: 30px;
+  text-decoration: none; 
+  list-style-type: none;
+  display: flex; 
+  flex-direction: row;
+  column-gap: 40px;
+}
+
+.items-playlists-link {
+  height: 250px;
+  width: 180px;
+  background-color: rgb(32, 36, 32);
+  margin-top: 10px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.4);
+  text-decoration: none;
+}
+
+.items-playlists-link:hover {
+  background-color: rgb(58, 53, 53);
+}
+
+.item-playlists-names {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.item-playlists-names:hover {
+  overflow: visible;
+  white-space: normal;
+  text-overflow: clip;
+}
+
+.see-all-link {
+  text-decoration: none;
+  color: rgb(150, 143, 143);
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 16px;
+  margin-left: 1015px;
+  text-transform: uppercase;
+}
+
+.see-all-link:hover {
+  text-decoration: underline 1px white;
 }

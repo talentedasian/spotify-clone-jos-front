@@ -17,7 +17,7 @@ function MainComponent () {
     return (
         <div className="main-component">
                 <Sidebar home={home} setSearchBar={setSearchBarInput} />
-                <SearchItem searchBar={isSearchBar} />
+                <SearchItem searchBar={isSearchBar} setSearchBarInput={setSearchBarInput}/>
 
         </div>
 

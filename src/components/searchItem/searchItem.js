@@ -18,49 +18,35 @@ function SearchItem ( props ) {
     const [isArtist,setIsArtist] = useState(false);
 
     const [isSeeAll, setIsSeeAll] = useState(false);
+    const [seeAllParamters,setIsSeeAllParameters] = useState();
 
     const [isOverflown,setIsOverflown] = useState(false);
-    const itemContentOverflown = useRef(null);
-
-    function seeAll () {
-        return (
-            <Link to="/artists/all">
-                                        <h1>See All</h1>
-                                    </Link>
-        )
-    }
 
     const fetchAPI = (params) => {
-        fetch(itemUrl + params)
-        .then(res => res.json())
-        .then(data => {
-                if (data.Status === "400") {
-                    console.log("400 Request Parameters Invalid");
-                    setIsOverflown(false);
-                } else if (itemContentOverflown.current.scrollWidth > itemContentOverflown.current.clientWidth ) {
-                    setIsOverflown(true);
-                    console.log(isOverflown);
-                } 
+            fetch(itemUrl + params)
+            .then(res => res.json())
+            .then(data => {
+                    if (data.Status === "400") {
+                        console.log("400 Request Parameters Invalid");
+                        setIsOverflown(false);
+                    } 
 
-                setItem(data);
-                setIsItem(true);
-                setIsSeeAll(false);
-                console.log(data);
-                setParameters(params)
-            })
-        .catch(err => console.log(err))
+                    setItem(data);
+                    setIsItem(true);
+                    setIsSeeAll(false);
+                    console.log(data);
+                    setParameters(params)
+                })
+            .catch(err => console.log(err));
     }
     
-    const fetchAPIAll = () => {
-        fetch("http://localhost:8080/api/search/item-artist?name=" + parameters)
+    const fetchAPIAll = (itemType) => {
+        fetch("http://localhost:8080/api/search/item-" + itemType + "?name=" + parameters)
         .then(res => res.json())
         .then(data => {
                 if (data.Status === "400") {
                     console.log("400 Request Parameters Invalid");
                     setIsOverflown(false);
-                } else if (itemContentOverflown.current.scrollWidth > itemContentOverflown.current.clientWidth ) {
-                    setIsOverflown(true);
-                    console.log(isOverflown);
                 } 
 
                 setItem(data);
@@ -68,6 +54,8 @@ function SearchItem ( props ) {
                 setIsSeeAll(true);
                 console.log(data);
             })
+        setIsSeeAllParameters(itemType);
+        props.setSearchBarInput(false);
     }
 
      const setArtistId = (id) => {
@@ -93,22 +81,17 @@ function SearchItem ( props ) {
                 }
             </div>
             <div>
-                {isItem && 
-                    <Link to="/artists/all" style={{
-                        textDecoration: "none"
-                    }}>
-                        <h3 style={{
-                            color: "white",
-                            textAlign: "end"
-                        }} onClick={e => fetchAPIAll(e.target.value)}>SEE ALL</h3>
+                {   isItem
+                         && 
+                    <Link to={`/artists/all/${parameters}`} className="see-all-link" onClick={e => fetchAPIAll("artist")}>
+                            see all
                     </Link>
                 }
                 {   isItem
                         &&
-                    <ul ref={itemContentOverflown} className="items-artist-container"> 
-                        {item?.Artists?.slice(0,5).map((artists,key) => {
-                            return  <li className="items-artists" key={key}>
-                                <Link to={`/artists/${artists.id}`} className="items-artist-link items-link"
+                    <div className="items-artist-container"> 
+                        {item?.Artists?.slice(0,5).map((artists) => {
+                            return <Link to={`/artists/${artists.id}`} className="items-artist-link items-link items-artists"
                                         onContextMenu={e => {
                                             setContextMenuAttributes({
                                             positionX: e.pageX + "px",
@@ -118,21 +101,35 @@ function SearchItem ( props ) {
                                             e.preventDefault();
                                         }} 
                                     onClick={(e) => setArtistId(e,artists.id)}>
-                                    <div className="items-artist-image" style={{
-                                        backgroundImage: `url(${artists.images[0]?.url})`
-                                    }} />
-                                    <p className="item-names">{artists.name}</p>
-                                    <p className="item-types">{artists.type}</p>
-                                </Link>
-                            </li>
+                                        <div className="items-artist-image" style={{
+                                            backgroundImage: `url(${artists.images[0]?.url})`
+                                        }} />
+                                        <p className="item-names">{artists.name}</p>
+                                        <p className="item-types">{artists.type}</p>
+                                    </Link>
                         })}
-                    <div className="overflown-artist-icon-right-container">
-                    {   isOverflown
-                             &&
-                        <BsBoxArrowInRight className="overflow-artist-icon-right" size="40px" />
-                    }
+                </div>
+                }
+                {   isItem
+                         && 
+                    <Link to={`/playlists/all/${parameters}`} className="see-all-link" onClick={e => fetchAPIAll("playlist")}>
+                            see all
+                    </Link>
+                }
+                {   isItem
+                        &&
+                    <div className="items-playlists-container">
+                        {item?.Playlists?.slice(0,5).map((playlists) => {
+                            return <Link className="items-playlists-link">
+                                        <div className="items-artist-image" style={{
+                                            backgroundImage: `url(${playlists.images[0]?.url})`
+                                        }} />
+                                        <p className="item-playlists-names item-names">{playlists.name}</p>
+                                        <p className="item-playlists-types item-types">{playlists.type}</p>
+                                    </Link>
+                        })}
                     </div>
-                </ul>
+
                 }
                 {   isItem
                         &&
@@ -142,35 +139,27 @@ function SearchItem ( props ) {
                                 return <li className="items-tracks" key={key}>
                                         <img src={tracks.album?.images[0].url} className="items-tracks-image"/>
                                         <p className="item-names item-names-track">{tracks.name}</p>
-                                        <Link to={`/artists/${tracks.artists[0].id}`} className="item-tracks-artist-link">
-                                                <p className="item-tracks-artist-name">{tracks?.artists[0]?.name}</p>
-                                        </Link>
                                         <p className="item-types item-tracks-types">{tracks.type}</p>
+                                        <Link to={`/artists/${tracks.artists[0].id}`} className="item-tracks-artist-link">
+                                                {tracks?.artists[0]?.name}
+                                        </Link>
                                 </li>
                             })}
                         </ul>
-                    <ul className="items-album-container">
-                        {item?.Albums?.slice(0,5).map((albums,key) => {
-                            return <li key={key} className="items-albums">
-                                <Link to={`/albums/${albums.id}`} className="item-albums-link">
-                                <div className="items-albums-image" style={{
-                                        backgroundImage: `url(${albums.images[0]?.url})`
-                                }} />
-                                <p className="item-names item-names-album">{albums.name}</p>
-                                <p className="item-types item-albums-types">{albums.type}</p>
-                                </Link>
-                            </li>
-                        })}
-                    </ul>
+                        <ul className="items-album-container">
+                            {item?.Albums?.slice(0,5).map((albums,key) => {
+                                return <Link to={`/albums/${albums.id}`} className="item-albums-link items-albums">
+                                        <div className="items-albums-image" style={{
+                                                backgroundImage: `url(${albums.images[0]?.url})`
+                                        }} />
+                                        <p className="item-names item-names-album">{albums.name}</p>
+                                        <p className="item-types item-albums-types">{albums.type}</p>
+                                    </Link>
+                            })}
+                        </ul>
                     </div>
                     }
-                   
-                    
-                
-                  
-                        
 
-                
 
                 {   isArtist
                         &&
@@ -181,14 +170,12 @@ function SearchItem ( props ) {
                         &&
                     <ul className="items-artists-see-all-container">
                         {item?.map((artists,key) => {
-                            return <li className="items-artists-see-all" key={key}>
-                                <Link to={`/artists/${artists.id}`} className="items-artists-see-all-link">
-                                <div className="items-artist-image items-artists-see-all-image" style={{
-                                        backgroundImage: `url(${artists.images[0]?.url})`
+                            return  <Link to={`/${seeAllParamters}/${artists.id}`} className="items-artists-see-all-link items-artists-see-all">
+                                    <div className="items-artist-image items-artists-see-all-image" style={{
+                                            backgroundImage: `url(${artists.images[0]?.url})`
                                     }} />
                                     <p className="item-names">{artists.name}</p>
-                                </Link>
-                            </li>   
+                                    </Link>
                         })}
                     </ul>
 
